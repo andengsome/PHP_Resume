@@ -3,12 +3,12 @@ session_start();
 
 // Check if user is logged in
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Redirect to login page if not logged in
+    // Start with login page if not logged in
     header('Location: login.php');
     exit();
 }
 
-// Handle logout
+// Logout
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: login.php');
@@ -67,7 +67,7 @@ $projects = [
         'type' => 'Group Project',
         'date' => 'December 13, 2023',
         'link' => 'https://github.com/andengsome/Dayaw',
-        'description' => 'A web-based cultural showcase platform promoting Filipino cultural heritage through digital marketplace featuring products from Luzon, Visayas, and Mindanao.',
+        'description' => 'A web-based cultural showcase platform promoting Filipino cultural heritage through a digital marketplace featuring products from Luzon, Visayas, and Mindanao.',
         'features' => [
             'Regional showcase functionality',
             'Cultural products catalog',
@@ -110,7 +110,7 @@ $education = [
 $skills = [
     'PHP', 'C++', 'C#', 'PostgreSQL',
     'HTML', 'CSS', 'MySQL', 'Python',
-    'Java', 'OOP',
+    'Java', 'OOP', 'MariaDB'
 ];
 
 // Strengths
@@ -137,7 +137,7 @@ $achievements = [
     ],
     [
         'title' => 'Project Leadership',
-        'description' => 'Successfully led frontend development team in student management system project, ensuring on-time delivery and quality standards.'
+        'description' => 'Successfully led a development team in an inn services system project, ensuring on-time delivery and quality standards.'
     ]
 ];
 ?>
@@ -564,3 +564,4 @@ $achievements = [
     </div>
 </body>
 </html>
+
