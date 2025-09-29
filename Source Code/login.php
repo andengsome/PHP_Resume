@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-// PHP Form Handling and Validation
+// Login Form Handling and Validation
 $message = '';
 $message_type = '';
 
 // Check if form was submitted via POST method
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form input using $_POST superglobal
+    // Get input using $_POST superglobal
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
     
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = 'All fields are required!';
         $message_type = 'error';
     } 
-    // Check for valid credentials
+    // Verify valid credentials
     elseif ($username === 'admin' && $password === '1234') {
         $message = 'Login Successful';
         $message_type = 'success';
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $username;
         $_SESSION['login_time'] = time();
         
-        // Redirect to resume page
+        // Redirect to resume page if logged in
         header('Location: resume.php');
         exit();
     } 
@@ -138,7 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             transform: translateY(1px);
         }
 
-        /* Message Styling */
         .message {
             padding: 15px;
             margin-bottom: 20px;
@@ -149,47 +148,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             animation: slideIn 0.3s ease-out;
         }
 
-        /* Success Message - Green */
         .message.success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
 
-        /* Error Message - Red */
         .message.error {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
 
-        /* Demo Information */
-        .demo-info {
-            background-color: #fff0ffff;
-            border: 1px solid #e776daff;
-            color: #954ec5ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .demo-info strong {
-            display: block;
-            margin-bottom: 10px;
-            color: #ac4fc6ff;
-        }
-
-        .demo-info code {
-            background-color: #f8f0ffff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            color: #922dc9ff;
-        }
-
-        /* Responsive Design */
         @media (max-width: 480px) {
             .login-container {
                 padding: 30px 20px;
@@ -200,7 +170,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-        /* Animation for messages */
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -251,7 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Auto-focus on username field
             document.getElementById('username').focus();
             
             // Add form validation feedback
@@ -260,7 +228,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             const password = document.getElementById('password');
             
             form.addEventListener('submit', function(e) {
-                // Reset any previous styling
                 username.style.borderColor = '#e1e1e1';
                 password.style.borderColor = '#e1e1e1';
                 
@@ -278,7 +245,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
                 
                 if (hasError) {
-                    // Focus on first empty field
                     if (username.value.trim() === '') {
                         username.focus();
                     } else {
@@ -287,7 +253,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             });
             
-            // Remove red border when user starts typing
             username.addEventListener('input', function() {
                 if (this.value.trim() !== '') {
                     this.style.borderColor = '#e1e1e1';
@@ -303,3 +268,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </body>
 </html>
+
